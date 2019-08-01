@@ -8,3 +8,6 @@
 Author: Skiychan   
 Email : dev@skiy.net   
 Link  : https://www.skiy.net   
+
+### License
+This project is licensed under the [MIT license](https://github.com/totoval/totoval/blob/master/LICENSE).
