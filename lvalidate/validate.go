@@ -1,4 +1,4 @@
-package mvalidate
+package lvalidate
 
 import (
 	"bytes"

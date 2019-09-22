@@ -1,4 +1,4 @@
-package mvalidate
+package lvalidate
 
 // Mode 生成校验码的方式
 type Mode int
