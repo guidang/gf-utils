@@ -6,12 +6,9 @@ import (
 	"github.com/gogf/gf/os/gcfg"
 )
 
-// Tree Tree
 var (
 	// Name Name
 	Name string
-	// Tree Tree
-	Tree *gcfg.Config
 )
 
 // SetCfgName SetCfgName
@@ -25,26 +22,22 @@ func GetCfgName() string {
 }
 
 // Instance Instance
-func Instance(name ...string) *gcfg.Config {
-	return g.Config(name...)
-}
 
 // InitCfg config init
-func InitCfg() (cfg *gcfg.Config, err error) {
+func InitCfg() (*gcfg.Config, error) {
 	if Name != "" {
 		g.Config().SetFileName(Name)
 	}
 
-	cfg = g.Config()
+	cfg := g.Config()
 	if cfg.FilePath() == "" || cfg.GetFileName() == "" {
 		return nil, fmt.Errorf("配置文件( %s )不存在", cfg.GetFileName())
 	}
 
-	Tree = cfg
-	return
+	return cfg, nil
 }
 
 // GetCfg get config
-func GetCfg() *gcfg.Config {
-	return Tree
+func GetCfg(name ...string) *gcfg.Config {
+	return g.Config(name...)
 }
