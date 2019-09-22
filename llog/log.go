@@ -36,7 +36,7 @@ func Instance() *glog.Logger {
 
 // InitLog log init
 func InitLog() error {
-	cfg := lcfg.GetCfg()
+	cfg := lcfg.Get()
 
 	//日志等级
 	if logLevel := cfg.GetString("log.level"); logLevel != "" {

@@ -4,6 +4,8 @@ package mvalidate
 type Mode int
 
 const (
-	// ByteOverlayAccumulation 字节加密方式
-	ByteOverlayAccumulation Mode = iota
+	// ByteXOR 前后字节异或方式
+	ByteXOR Mode = iota
+	// ByteSuperposition 字节累计叠加方式
+	ByteSuperposition
 )

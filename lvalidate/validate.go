@@ -13,7 +13,7 @@ type Validate struct {
 }
 
 // NewValidate Validate init
-func NewValidate(data []byte, code []byte, flag int64) *Validate {
+func NewValidate(data []byte, code []byte, flag Mode) *Validate {
 	t := &Validate{}
 	t.data = data // 数据
 	t.code = code // 校验码
@@ -40,16 +40,25 @@ func (t *Validate) ValidateCode() error {
 }
 
 // MakeCode 生成校验码
-func (t *Validate) MakeCode() (err error) {
-	if ByteOverlayAccumulation == t.flag {
-		return t.makeCodeFlag1()
+func (t *Validate) MakeCode() error {
+	switch t.flag {
+	case ByteXOR: // 前后字节异或方式
+		return t.makeByteXOR()
+
+	case ByteSuperposition: // 字节累计叠加方式
+		return t.makeByteSuperposition()
 	}
 
 	return errors.New("不支持此校验码生成方式")
 }
 
-// makeCodeFlag1 字节流累计相加方式
-func (t *Validate) makeCodeFlag1() (err error) {
+// GetCode 获取校验码
+func (t *Validate) GetCode() []byte {
+	return t.code
+}
+
+// makeByteXOR 前后字节异或方式
+func (t *Validate) makeByteXOR() error {
 	dataLen := len(t.data)
 
 	if dataLen == 0 {
@@ -62,10 +71,22 @@ func (t *Validate) makeCodeFlag1() (err error) {
 	}
 
 	t.code = append([]byte{}, code)
-	return
+	return nil
 }
 
-// GetCode 获取校验码
-func (t *Validate) GetCode() []byte {
-	return t.code
+// makeByteSuperposition 字节累计叠加方式
+func (t *Validate) makeByteSuperposition() error {
+	dataLen := len(t.data)
+	if dataLen == 0 {
+		return errors.New("can not make code, because data is nil")
+	}
+
+	var value byte
+
+	for i := 0; i < dataLen; i++ {
+		value += t.data[i]
+	}
+
+	t.code = append([]byte{}, value)
+	return nil
 }

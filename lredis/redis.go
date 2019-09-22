@@ -11,8 +11,8 @@ func Init() error {
 }
 
 // Get 获取 Redis
-func Get() *gredis.Redis {
-	return g.Redis()
+func Get(name ...string) *gredis.Redis {
+	return g.Redis(name...)
 }
 
 // Ping Ping
