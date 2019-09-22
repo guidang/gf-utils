@@ -24,6 +24,11 @@ func GetCfgName() string {
 	return Name
 }
 
+// Instance Instance
+func Instance(name ...string) *gcfg.Config {
+	return g.Config(name...)
+}
+
 // InitCfg config init
 func InitCfg() (cfg *gcfg.Config, err error) {
 	if Name != "" {
