@@ -1,17 +1,18 @@
 package mclient
 
 import (
+	"github.com/gogf/gf/container/gmap"
 	"sync"
 )
 
 var (
-	clients map[string]interface{}
+	clients gmap.StrAnyMap
 	lock    sync.RWMutex
 )
 
 // Init Init client
 func Init() {
-	clients = map[string]interface{}{}
+	clients = gmap.StrAnyMap{}
 }
 
 // Add Add client
@@ -19,22 +20,19 @@ func Add(k string, c interface{}) {
 	lock.Lock()
 	defer lock.Unlock()
 
-	clients[k] = c
+	clients.Set(k, c)
 }
 
 // Get Get client
-func Get(key string) interface{} {
+func Get(k string) interface{} {
 	lock.Lock()
 	defer lock.Unlock()
 
-	if _, ok := clients[key]; ok {
-		return clients[key]
-	}
-	return nil
+	return clients.Get(k)
 }
 
 // All All clients
-func All() map[string]interface{} {
+func All() gmap.StrAnyMap {
 	return clients
 }
 
@@ -43,5 +41,5 @@ func Del(k string) {
 	lock.Lock()
 	defer lock.Unlock()
 
-	delete(clients, k)
+	clients.Remove(k)
 }
