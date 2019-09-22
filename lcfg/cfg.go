@@ -7,26 +7,25 @@ import (
 )
 
 var (
-	// Name Name
-	Name string
+	name string
 )
 
 // SetCfgName SetCfgName
 func SetCfgName(n string) {
-	Name = n
+	name = n
 }
 
-// GetCfgName GetCfgName
-func GetCfgName() string {
-	return Name
+// GetName GetCfgName
+func GetName() string {
+	return name
 }
 
 // Instance Instance
 
-// InitCfg config init
-func InitCfg() (*gcfg.Config, error) {
-	if Name != "" {
-		g.Config().SetFileName(Name)
+// Init config init
+func Init() (*gcfg.Config, error) {
+	if name != "" {
+		g.Config().SetFileName(name)
 	}
 
 	cfg := g.Config()
@@ -37,7 +36,7 @@ func InitCfg() (*gcfg.Config, error) {
 	return cfg, nil
 }
 
-// GetCfg get config
-func GetCfg(name ...string) *gcfg.Config {
+// Get get config
+func Get(name ...string) *gcfg.Config {
 	return g.Config(name...)
 }

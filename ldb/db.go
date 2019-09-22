@@ -12,8 +12,8 @@ func Init() error {
 }
 
 // Get Get DB
-func Get() (db gdb.DB) {
-	return g.DB()
+func Get(name ...string) (db gdb.DB) {
+	return g.DB(name...)
 }
 
 // Ping 检测数据库连接是否正常
