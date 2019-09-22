@@ -1,4 +1,4 @@
-package mclient
+package lclient
 
 import (
 	"github.com/gogf/gf/container/gmap"
