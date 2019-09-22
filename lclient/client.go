@@ -6,13 +6,13 @@ import (
 )
 
 var (
-	clients gmap.StrAnyMap
+	clients *gmap.StrAnyMap
 	lock    sync.RWMutex
 )
 
 // Init Init client
 func Init() {
-	clients = gmap.StrAnyMap{}
+	clients = gmap.NewStrAnyMap()
 }
 
 // Add Add client
@@ -32,7 +32,7 @@ func Get(k string) interface{} {
 }
 
 // All All clients
-func All() gmap.StrAnyMap {
+func All() *gmap.StrAnyMap {
 	return clients
 }
 
