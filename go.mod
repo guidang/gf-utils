@@ -1,5 +1,8 @@
-module github.com/skiy/gf-utils
+module github.com/skiy/gfutils
 
-go 1.12
+go 1.13
 
-require github.com/gogf/gf v1.8.3
+require (
+	github.com/go-redis/redis v6.15.5+incompatible // indirect
+	github.com/gogf/gf v1.9.2
+)

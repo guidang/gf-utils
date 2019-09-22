@@ -1,13 +1,14 @@
-package ulog
+package llog
 
 import (
-	"github.com/gogf/gf/g/os/glog"
-	"github.com/skiy/gf-utils/ucfg"
+	"github.com/gogf/gf/os/glog"
+	"github.com/skiy/gfutils/lcfg"
 )
 
 var (
 	// Log logger
-	Log   *glog.Logger
+	Log = glog.New()
+
 	level = map[string]int{
 		"all":           glog.LEVEL_ALL,
 		"dev":           glog.LEVEL_DEV,
@@ -26,20 +27,19 @@ var (
 	}
 )
 
-// InitLog log init
-func InitLog() *glog.Logger {
-	Log = glog.New()
-	Log.SetLevel(glog.LEVEL_ALL)
-	return Log
+// Instance Instance
+func Instance() *glog.Logger {
+	log := glog.New()
+	log.SetLevel(glog.LEVEL_ALL)
+	return log
 }
 
-// ReadLog read log config
-func ReadLog() *glog.Logger {
-	cfg := ucfg.GetCfg()
+// InitLog log init
+func InitLog() error {
+	cfg := lcfg.GetCfg()
 
 	//日志等级
 	if logLevel := cfg.GetString("log.level"); logLevel != "" {
-
 		if l, ok := level[logLevel]; ok {
 			Log.SetLevel(l)
 		}
@@ -55,5 +55,10 @@ func ReadLog() *glog.Logger {
 	// 是否输出错误
 	Log.Stack(cfg.GetBool("log.trace"))
 
+	return nil
+}
+
+// GetLog GetLog
+func GetLog() *glog.Logger {
 	return Log
 }
