@@ -6,22 +6,20 @@ import (
 	"github.com/gogf/gf/frame/g"
 )
 
-// InitDB InitDB
-func InitDB() (err error) {
-	err = Ping()
-	return
+// Init Init DB
+func Init() error {
+	return Ping()
 }
 
-// GetDB GetDB
-func GetDB() (db gdb.DB) {
-	db = g.DB()
-	return db
+// Get Get DB
+func Get() (db gdb.DB) {
+	return g.DB()
 }
 
 // Ping 检测数据库连接是否正常
-func Ping() (err error) {
-	if err = GetDB().PingMaster(); err != nil {
+func Ping() error {
+	if err := Get().PingMaster(); err != nil {
 		return fmt.Errorf("数据库连接失败: %s", err.Error())
 	}
-	return err
+	return nil
 }
