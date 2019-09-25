@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"encoding/hex"
 	"errors"
-	"github.com/axgle/mahonia"
 	"golang.org/x/text/encoding/simplifiedchinese"
 	"golang.org/x/text/transform"
 	"io/ioutil"
@@ -36,27 +35,4 @@ func UTF8ToGBK(s []byte) ([]byte, error) {
 		return nil, e
 	}
 	return d, nil
-}
-
-// EncodeToByte 中文字符转成 hex 字符串
-func EncodeToByte(str string, encode string) (resp []byte) {
-	if encode == "" {
-		encode = "gbk"
-	}
-
-	enc := mahonia.NewEncoder(encode)
-	resp = []byte(enc.ConvertString(str))
-	return
-}
-
-// DecodeToByte hex 字符串转中文字节流
-// n 字节长度, cdata 字节流, err 错误
-func DecodeToByte(str string, decode string) (n int, cdata []byte, err error) {
-	if decode == "" {
-		decode = "gbk"
-	}
-
-	respByte, _ := hex.DecodeString(str)
-	dec := mahonia.NewDecoder(decode)
-	return dec.Translate(respByte, false)
 }
