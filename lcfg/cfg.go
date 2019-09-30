@@ -2,6 +2,7 @@ package lcfg
 
 import (
 	"fmt"
+
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/os/gcfg"
 )
@@ -37,6 +38,10 @@ func Init() (*gcfg.Config, error) {
 }
 
 // Get get config
-func Get(name ...string) *gcfg.Config {
-	return g.Config(name...)
+func Get(n ...string) *gcfg.Config {
+	if len(n) > 0 {
+		return g.Config(n...)
+	}
+
+	return g.Config()
 }
