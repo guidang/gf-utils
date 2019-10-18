@@ -78,7 +78,7 @@ func (t *Validate) makeByteXOR() error {
 func (t *Validate) makeByteSuperposition() error {
 	dataLen := len(t.data)
 	if dataLen == 0 {
-		return errors.New("can not make code, because data is nil")
+		return errors.New("空数据无法生成校验码")
 	}
 
 	var value byte
