@@ -23,7 +23,7 @@ var (
 		"warning":       glog.LEVEL_WARN,
 		"error":         glog.LEVEL_ERRO,
 		"critical":      glog.LEVEL_CRIT,
-		"alert":         glog.LEVEL_PROD | glog.LEVEL_INFO,
+		"alert":         glog.LEVEL_PROD | glog.LEVEL_NOTI | glog.LEVEL_INFO,
 	}
 )
 
