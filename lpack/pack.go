@@ -48,23 +48,16 @@ func (t *Pack) Unpack() (resp [][]byte, err error) {
 	offset := 0
 
 	for {
-		//无数据
-		//if dataLen == 0 {
-		//	break
-		//}
-
 		// 索引超出
 		if offset >= dataLen {
 			break
 		}
 
-		//mlog.ShowPrintln("offset: ", offset, s1, s2, x1, x2, sLen, eLen, dataLen)
-
-		//没有开始位置, 处理开始位置
+		// 没有开始位置, 处理开始位置
 		if s1 == -1 {
-			//匹配包头位置
+			// 匹配包头位置
 			if data[offset] == t.start[x1] {
-				//完全匹配
+				// 完全匹配
 				if x1 == sLen-1 {
 					// 开始位置
 					s1 = offset - x1
