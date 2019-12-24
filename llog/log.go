@@ -34,8 +34,8 @@ func Instance() *glog.Logger {
 	return log
 }
 
-// InitLog log init
-func InitLog() error {
+// Init log init
+func Init() error {
 	cfg := lcfg.Get()
 
 	//日志等级
@@ -56,9 +56,4 @@ func InitLog() error {
 	Log.Stack(cfg.GetBool("log.trace"))
 
 	return nil
-}
-
-// GetLog GetLog
-func GetLog() *glog.Logger {
-	return Log
 }
