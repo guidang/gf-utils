@@ -1,5 +1,9 @@
 package llog
 
+import (
+	"github.com/gogf/gf/os/glog"
+)
+
 // GetLog GetLog
 // Deprecated
 func GetLog() *glog.Logger {
