@@ -21,8 +21,6 @@ func GetName() string {
 	return name
 }
 
-// Instance Instance
-
 // Init config init
 func Init() (*gcfg.Config, error) {
 	if name != "" {
