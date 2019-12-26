@@ -1,4 +1,4 @@
-package lcommon
+package lfilepath
 
 import (
 	"path/filepath"

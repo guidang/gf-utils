@@ -3,6 +3,7 @@ package lcommon
 import (
 	"github.com/skiy/gfutils/lcrypto"
 	"github.com/skiy/gfutils/lfile"
+	"github.com/skiy/gfutils/lfilepath"
 	"mime/multipart"
 )
 
@@ -16,4 +17,10 @@ func MD5(str string) string {
 // Deprecated
 func FileMD5(file *multipart.FileHeader) (md5Str string, err error) {
 	return lfile.MD5(file)
+}
+
+// Ext returns the real file name extension used by path.
+// Deprecated
+func Ext(path string) string {
+	return lfilepath.Ext(path)
 }
