@@ -2,7 +2,7 @@ package llog
 
 import (
 	"github.com/gogf/gf/os/glog"
-	"github.com/skiy/gfutils/lcfg"
+	"github.com/lesebox/gf-utils/lcfg"
 )
 
 var (

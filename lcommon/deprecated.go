@@ -1,9 +1,9 @@
 package lcommon
 
 import (
-	"github.com/skiy/gfutils/lcrypto"
-	"github.com/skiy/gfutils/lfile"
-	"github.com/skiy/gfutils/lfilepath"
+	"github.com/lesebox/gf-utils/lcrypto"
+	"github.com/lesebox/gf-utils/lfile"
+	"github.com/lesebox/gf-utils/lfilepath"
 	"mime/multipart"
 )
 
